@@ -16,7 +16,12 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: ["http://localhost:5173", "https://whatsapp-frontend-ivory.vercel.app"] })); // Allow Vite Frontend
+// app.use(cors({ origin: ["http://localhost:5173", "https://whatsapp-frontend-ivory.vercel.app"] })); // Allow Vite Frontend 
+
+app.use(cors({
+  origin: "https://whatsapp-frontend-ivory.vercel.app",
+  credentials: true, // Important for cookies/sessions/headers
+}));
 app.use(express.json()); // Allow JSON data
 
 // Mount Routes
