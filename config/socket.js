@@ -5,7 +5,7 @@ const initSocket = (server) => {
   const io = socketIO(server, {
     pingTimeout: 60000, // Close connection if no ping for 60s to save bandwidth
     cors: {
-      origin: "http://localhost:3000", // Allow connection from frontend
+      origin: "https://whatsapp-frontend-ivory.vercel.app", // Allow connection from frontend
     },
   });
 
