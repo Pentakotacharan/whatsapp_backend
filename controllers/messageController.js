@@ -4,10 +4,10 @@ const Chat = require("../models/chatModel");
 const User = require("../models/userModel");
 
 const sendMessage = asyncHandler(async (req, res) => {
-  const { content, chatId } = req.body;
+  const { content, chatId, mediaUrl, mediaType} = req.body;
 
   console.log("Backend Received -> Content:", content, "ChatId:", chatId);
-  if (!content || !chatId) {
+  if ((!content && !mediaUrl) || !chatId) {
     console.log("Invalid data passed into request");
     return res.sendStatus(400);
   }
@@ -16,6 +16,8 @@ const sendMessage = asyncHandler(async (req, res) => {
     sender: req.user._id,
     content: content,
     chat: chatId,
+    mediaUrl: mediaUrl || "",
+    mediaType: mediaType || "none",
   };
 
   try {

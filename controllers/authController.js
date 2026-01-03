@@ -25,7 +25,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   const user = await User.create({ name, email, password, pic });
-
+   console.log("Created User:", user);
   if (user) {
     res.status(201).json({
       _id: user._id,
